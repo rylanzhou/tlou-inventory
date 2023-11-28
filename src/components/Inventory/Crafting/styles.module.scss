@@ -4,7 +4,7 @@
   height: 10rem;
   margin: 1rem 0;
 
-  h2 {
+  .name {
     font-size: 1.4rem;
     color: $highlight;
     font-weight: 500;
@@ -33,7 +33,13 @@
   .material-list {
     display: flex;
     justify-content: space-between;
+    width: calc(100% + 5.4rem);
     list-style: none;
+    transition: width 0.2s ease-in-out;
+
+    &:hover {
+      width: 100%;
+    }
 
     li {
       display: flex;
@@ -62,11 +68,114 @@
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 5.3rem);
+  place-items: center;
   margin: 1.5rem 0;
 
-  div {
-    height: 5.3rem;
+  .tile {
+    position: relative;
+    width: 100%;
+    height: 100%;
     background-color: rgba(255, 255, 255, 0.05);
+    transition:
+      background-color 0.2s ease-in-out,
+      height 0.5s ease-in-out;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: rgba(255, 255, 255, 0.5);
+      opacity: 0;
+      transition: opacity 0.2s ease-in-out;
+    }
+
+    &::before {
+      top: 0;
+    }
+
+    &::after {
+      bottom: 0;
+    }
+
+    svg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 2.4rem;
+      height: 2.4rem;
+      fill: $highlight;
+    }
+
+    &.melee {
+      svg {
+        width: 2.8rem;
+        height: 2.8rem;
+      }
+    }
+
+    &.smoke-bomb {
+      svg {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+
+    .number {
+      position: absolute;
+      bottom: 0.3rem;
+      right: 0.5rem;
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.7);
+
+      .count {
+        font-size: 1.4rem;
+        transition: color 0.2s ease-in-out;
+      }
+
+      .capacity {
+        display: none;
+        position: relative;
+        padding-left: 0.4rem;
+        margin-left: 0.3rem;
+        color: rgba(255, 255, 255, 0.7);
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 60%;
+          left: 0;
+          transform: translateY(-50%);
+          width: 1.5px;
+          height: 0.6rem;
+          background-color: rgba(255, 255, 255, 0.7);
+        }
+      }
+    }
+
+    // When hovering, display top and bottom borders, lighten background, highlight count, display capacity
+    &:hover,
+    &:focus {
+      background-color: rgba(255, 255, 255, 0.1);
+
+      &::before,
+      &::after {
+        opacity: 1;
+      }
+
+      .number {
+        .count {
+          color: $highlight;
+        }
+
+        .capacity {
+          display: inline-block;
+        }
+      }
+    }
   }
 }
 

@@ -13,7 +13,7 @@ export default function Icon(props: IconProps) {
 
   const fontVariationSettings = useMemo(
     () => ({
-      'font-variation-settings': [`'FILL' ${fill}`, `'wght' ${weight}`].join(', '),
+      fontVariationSettings: [`'FILL' ${fill}`, `'wght' ${weight}`].join(', '),
     }),
     [fill, weight],
   );

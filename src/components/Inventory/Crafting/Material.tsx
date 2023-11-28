@@ -44,6 +44,12 @@ export default function Material() {
           </div>
           <div className={styles.count}>2</div>
         </li>
+        <li>
+          <div className={styles.item}>
+            <Icon name="handyman" weight={300} size={itemIconSize} />
+          </div>
+          <div className={styles.count}>2</div>
+        </li>
       </ul>
     </div>
   );
