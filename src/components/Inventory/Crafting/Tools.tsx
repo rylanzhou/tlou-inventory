@@ -1,8 +1,8 @@
 import styles from './styles.module.scss';
 
-export default function Craft() {
+export default function Tools() {
   return (
-    <div className={styles.Craft}>
+    <div className={styles.Tools}>
       <div></div>
       <div></div>
       <div></div>

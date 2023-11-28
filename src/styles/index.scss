@@ -26,6 +26,10 @@ body {
   background-color: #2d2d2d;
 }
 
+hr {
+  border-color: #9994;
+}
+
 #root {
   width: clamp(1280px, 100dvw, 2560px);
   height: 100dvh;

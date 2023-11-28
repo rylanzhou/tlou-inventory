@@ -1,0 +1,39 @@
+@import '~styles/variables.scss';
+
+.Navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.4rem;
+
+  .control-key {
+    padding: 0 0.4rem;
+    background-color: #999;
+    color: #3f3f3f;
+    font-weight: 500;
+    border-radius: 2px;
+
+    &.active {
+      background-color: $highlight;
+    }
+  }
+
+  .divider {
+    flex: 1;
+    height: 1px;
+    background-color: #9999;
+  }
+
+  .menu {
+    display: flex;
+    list-style: none;
+    gap: 1.4rem;
+    padding: 0;
+
+    li {
+      &.active {
+        color: $highlight;
+      }
+    }
+  }
+}
