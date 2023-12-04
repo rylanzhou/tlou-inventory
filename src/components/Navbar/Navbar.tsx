@@ -1,6 +1,6 @@
 import cls from 'classnames';
 
-import Icon from '~components/Icon';
+import Icon from '~/components/Icon';
 
 import styles from './styles.module.scss';
 

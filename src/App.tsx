@@ -1,5 +1,5 @@
-import Background from '~components/Background';
-import Inventory from '~components/Inventory';
+import Background from '~/components/Background';
+import Inventory from '~/components/Inventory';
 
 import styles from './App.module.scss';
 

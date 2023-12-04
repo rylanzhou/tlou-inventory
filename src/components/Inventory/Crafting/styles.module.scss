@@ -1,8 +1,11 @@
-@import '~styles/variables.scss';
+@import '~/styles/variables.scss';
 
 .Text {
+  display: flex;
+  flex-direction: column;
   height: 10rem;
   margin: 1rem 0;
+  gap: 0.6rem;
 
   .name {
     font-size: 1.4rem;
@@ -11,13 +14,15 @@
   }
 
   .description {
-    margin: 0.6rem 0;
+    flex: 1;
     font-size: 1.35rem;
     color: #bbb;
     font-weight: normal;
   }
 
   .recipe {
+    height: min-content;
+    margin-top: auto;
     font-size: 1.35rem;
 
     span {
@@ -33,11 +38,12 @@
   .material-list {
     display: flex;
     justify-content: space-between;
+    // increase width by default to hide "melee" material
     width: calc(100% + 5.4rem);
     list-style: none;
     transition: width 0.2s ease-in-out;
 
-    &:hover {
+    &.more {
       width: 100%;
     }
 
@@ -157,7 +163,7 @@
     }
 
     // When hovering, display top and bottom borders, lighten background, highlight count, display capacity
-    &:hover,
+    &.active,
     &:focus {
       background-color: rgba(255, 255, 255, 0.1);
 

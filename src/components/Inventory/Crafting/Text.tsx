@@ -1,15 +1,51 @@
+import { useMemo } from 'react';
+import { useAtomValue } from 'jotai';
+
+import { currentSelectedToolAtom, materialsAtom } from '~/atoms';
+
 import styles from './styles.module.scss';
 
 export default function Text() {
+  const currentSelectedTool = useAtomValue(currentSelectedToolAtom);
+  const materials = useAtomValue(materialsAtom);
+
+  const recipeItems = useMemo(() => {
+    const materialRequired = currentSelectedTool?.materials ?? [];
+
+    return materialRequired.map((materialKey) => (
+      <span key={materialKey}>{materials[materialKey]?.name}</span>
+    ));
+  }, [currentSelectedTool, materials]);
+
   return (
     <div className={styles.Text}>
-      <h2 className={styles.name}>SHIV</h2>
-      <p className={styles.description}>
-        Instantly kills enemies from stealth and saves from clicker grabs. Breaks after three uses,
-        or after saving from a clicker grab.
-      </p>
+      <h2 className={styles.name}>{currentSelectedTool?.name}</h2>
+      <div className={styles.description}>
+        <p>{currentSelectedTool?.description}</p>
+      </div>
       <p className={styles.recipe}>
-        Recipe requires <span>binding</span> and <span>blade</span>.
+        Recipe requires{' '}
+        {recipeItems.map((element, index, array) => {
+          if (index === 0) {
+            return <span key={index}>{element}</span>;
+          }
+
+          if (index < array.length - 1) {
+            return (
+              <>
+                , <span key={index}>{element}</span>
+              </>
+            );
+          }
+
+          return (
+            <>
+              {' '}
+              and <span>{element}</span>
+            </>
+          );
+        })}
+        .
       </p>
     </div>
   );

@@ -1,4 +1,5 @@
-import BackgroundImg from '~assets/images/background.jpg';
+import BackgroundImg from '~/assets/images/background.jpg';
+
 import styles from './styles.module.scss';
 
 export default function Background() {
