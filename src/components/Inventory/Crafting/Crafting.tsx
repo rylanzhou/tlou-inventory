@@ -1,7 +1,7 @@
 import Action from './Action';
 import Material from './Material';
 import Text from './Text';
-import Craft from './Tools';
+import Tools from './Tools';
 
 export default function Crafting() {
   return (
@@ -10,7 +10,7 @@ export default function Crafting() {
       <hr />
       <Material />
       <hr />
-      <Craft />
+      <Tools />
       <hr />
       <Action />
     </div>

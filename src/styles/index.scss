@@ -33,4 +33,6 @@ hr {
 #root {
   width: clamp(1280px, 100dvw, 2560px);
   height: 100dvh;
+  min-height: 960px;
+  overflow: hidden;
 }

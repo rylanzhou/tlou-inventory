@@ -1,47 +1,44 @@
 import cls from 'classnames';
 
-import BombSvg from './svgs/Bomb';
-import MedkitSvg from './svgs/Medkit';
-import Melee from './svgs/Melee';
-import MolotovSvg from './svgs/Molotov';
-import ShivSvg from './svgs/Shiv';
-import SmokeBombSvg from './svgs/SmokeBomb';
+import { ToolKeys } from '~/enums';
+
+import { BombSvg, MedkitSvg, Melee, MolotovSvg, ShivSvg, SmokeBombSvg } from './svgs';
 
 import styles from './styles.module.scss';
 
 const toolsList = [
   {
-    name: 'medkit',
-    svg: <MedkitSvg />,
+    name: ToolKeys.MEDKIT,
+    icon: <MedkitSvg />,
   },
   {
-    name: 'molotov',
-    svg: <MolotovSvg />,
+    name: ToolKeys.MOLOTOV,
+    icon: <MolotovSvg />,
   },
   {
-    name: 'shiv',
-    svg: <ShivSvg />,
+    name: ToolKeys.SHIV,
+    icon: <ShivSvg />,
   },
   {
-    name: 'smoke-bomb',
-    svg: <SmokeBombSvg />,
+    name: ToolKeys.SMOKE_BOMB,
+    icon: <SmokeBombSvg />,
   },
   {
-    name: 'bomb',
-    svg: <BombSvg />,
+    name: ToolKeys.BOMB,
+    icon: <BombSvg />,
   },
   {
-    name: 'melee',
-    svg: <Melee />,
+    name: ToolKeys.MELEE_UPGRADE,
+    icon: <Melee />,
   },
 ];
 
 export default function Tools() {
   return (
     <div className={styles.Tools}>
-      {toolsList.map(({ name, svg }) => (
+      {toolsList.map(({ name, icon }) => (
         <div key={name} className={cls(styles.tile, styles[name])}>
-          {svg}
+          {icon}
 
           <div className={styles.number}>
             <span className={styles.count}>2</span>
