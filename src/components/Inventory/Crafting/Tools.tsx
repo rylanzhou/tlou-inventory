@@ -1,7 +1,14 @@
+import { useCallback, useEffect, useRef } from 'react';
 import cls from 'classnames';
-import { useAtom, useAtomValue } from 'jotai';
+import { useAtom, useAtomValue, useSetAtom } from 'jotai';
 
-import { craftingDisabledAtom, currentSelectedToolAtom, isCraftingAtom, toolsAtom } from '~/atoms';
+import {
+  craftingDisabledAtom,
+  craftToolAtom,
+  currentSelectedToolAtom,
+  isCraftingAtom,
+  toolsAtom,
+} from '~/atoms';
 import { ToolKeys, toolList } from '~/enums';
 import { Tool } from '~/types';
 
@@ -23,23 +30,67 @@ export default function Tools() {
   const [currentSelectedTool, setCurrentSelectedTool] = useAtom(currentSelectedToolAtom);
   const craftingDisabled = useAtomValue(craftingDisabledAtom);
   const [isCrafting, setIsCrafting] = useAtom(isCraftingAtom);
+  const craftTool = useSetAtom(craftToolAtom);
 
-  const handleToolSelect = (tool?: Tool) => () => {
-    if (!tool || isCrafting) return;
+  const toolsSectionRef = useRef<HTMLDivElement>(null);
 
-    console.log('here');
-    setCurrentSelectedTool(tool);
-  };
+  useEffect(() => {
+    toolsSectionRef.current?.focus();
+  }, []);
+
+  const handleToolSelect = useCallback(
+    (tool?: Tool) => () => {
+      if (!tool || isCrafting) return;
+
+      setCurrentSelectedTool(tool);
+    },
+    [isCrafting, setCurrentSelectedTool],
+  );
+
+  const handleMouseDown = useCallback(() => {
+    if (craftingDisabled || isCrafting) return;
+
+    craftTool(currentSelectedTool?.key);
+  }, [craftingDisabled, currentSelectedTool, isCrafting, craftTool]);
+
+  // give up crafting
+  const handleMouseUp = useCallback(() => {
+    setIsCrafting(false);
+  }, [setIsCrafting]);
+
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent<HTMLDivElement>) => {
+      if (e.key === 'e') {
+        handleMouseDown();
+      }
+    },
+    [handleMouseDown],
+  );
+
+  const handleKeyUp = useCallback(
+    (e: React.KeyboardEvent<HTMLDivElement>) => {
+      if (e.key === 'e') {
+        handleMouseUp();
+      }
+    },
+    [handleMouseUp],
+  );
 
   return (
-    <div className={styles.Tools}>
+    <div
+      className={styles.Tools}
+      ref={toolsSectionRef}
+      tabIndex={0}
+      onKeyDown={handleKeyDown}
+      onKeyUp={handleKeyUp}
+    >
       {toolList.map((toolKey) => {
         const isActive = currentSelectedTool?.key === toolKey;
 
         return (
           <div
             key={toolKey}
-            tabIndex={1}
+            tabIndex={0}
             className={cls(styles.tile, styles[toolKey], {
               [styles.active]: isActive,
               [styles.crafting]: isActive && isCrafting,
@@ -47,8 +98,8 @@ export default function Tools() {
             })}
             onMouseOver={handleToolSelect(tools[toolKey])}
             onFocus={handleToolSelect(tools[toolKey])}
-            onMouseDown={() => !craftingDisabled && setIsCrafting(true)}
-            onMouseUp={() => setIsCrafting(false)}
+            onMouseDown={handleMouseDown}
+            onMouseUp={handleMouseUp}
           >
             {toolIconMap[toolKey]}
 

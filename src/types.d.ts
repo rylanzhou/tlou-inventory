@@ -18,9 +18,5 @@ export type Tool = {
   capacity: number;
 };
 
-export type InventoryState = {
-  currentSelectedTool: Tool | null;
-  tools: Partial<Record<ToolKeys, Tool>>;
-  materials: Partial<Record<MaterialKeys, Material>>;
-  isCrafting: boolean;
-};
+export type ToolState = Partial<Record<ToolKeys, Tool>>;
+export type MaterialState = Partial<Record<MaterialKeys, Material>>;

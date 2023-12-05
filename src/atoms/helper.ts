@@ -1,9 +1,9 @@
 import { materialsData, toolsData } from '~/data';
 import { MaterialKeys, materialList, ToolKeys, toolList } from '~/enums';
-import { InventoryState } from '~/types';
+import { MaterialState, ToolState } from '~/types';
 
-export const initInventoryState = (): InventoryState => {
-  const toolsMap: InventoryState['tools'] = {};
+export const initToolState = (): ToolState => {
+  const toolsMap: ToolState = {};
 
   toolList.forEach((toolKey) => {
     toolsMap[toolKey] = {
@@ -14,16 +14,11 @@ export const initInventoryState = (): InventoryState => {
     };
   });
 
-  return {
-    currentSelectedTool: toolsMap[ToolKeys.MEDKIT] || null,
-    tools: toolsMap,
-    isCrafting: false,
-    materials: initMaterialState(),
-  };
+  return toolsMap;
 };
 
-export const initMaterialState = (): InventoryState['materials'] => {
-  const materialsMap: InventoryState['materials'] = {};
+export const initMaterialState = (): MaterialState => {
+  const materialsMap: MaterialState = {};
 
   materialList.forEach((materialKey) => {
     materialsMap[materialKey] = {
