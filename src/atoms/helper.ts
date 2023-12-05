@@ -9,7 +9,8 @@ export const initToolState = (): ToolState => {
     toolsMap[toolKey] = {
       ...toolsData[toolKey],
       key: toolKey,
-      count: Math.floor(4 * Math.random()), // between 0 - 3
+      // 0 - 1 for melee upgrade, 0 - 3 for others
+      count: Math.floor((toolKey === ToolKeys.MELEE_UPGRADE ? 2 : 4) * Math.random()),
       capacity: toolKey === ToolKeys.MELEE_UPGRADE ? 1 : 3,
     };
   });
@@ -23,7 +24,8 @@ export const initMaterialState = (): MaterialState => {
   materialList.forEach((materialKey) => {
     materialsMap[materialKey] = {
       ...materialsData[materialKey as MaterialKeys],
-      count: Math.floor(4 * Math.random()), // between 0 - 3
+      // 0 - 1 for melee, 0 - 3 for others
+      count: Math.floor((materialKey === MaterialKeys.MELEE ? 2 : 4) * Math.random()),
       capacity: materialKey === MaterialKeys.MELEE ? 1 : 3,
     };
   });
