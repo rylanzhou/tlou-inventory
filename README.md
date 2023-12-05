@@ -1,30 +1,15 @@
-# React + TypeScript + Vite
+# The Last of Us Part I Inventory Clone
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The in-game inventory UI clone of The Last of Us Part I.
 
-Currently, two official plugins are available:
+View live page [here](https://tlou-inventory.vercel.app/).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<img width="1645" alt="image" src="https://github.com/rylanzhou/tlou-inventory/assets/43603673/f256b432-54af-47be-bf64-8da21126209d">
 
-## Expanding the ESLint configuration
+## Core Tech
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- ⚛ [React](https://react.dev/)
+- 🚀 [Vitejs](https://vitejs.dev/): Build tool & Dev server
+- 👻 [Jōtai](https://jotai.org/): Atom state management framework
 
-- Configure the top-level `parserOptions` property like this:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
