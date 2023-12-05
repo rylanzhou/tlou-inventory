@@ -11,6 +11,7 @@ export type Tool = {
   key: ToolKeys;
   name: string;
   description: string;
+  extraDescription?: string;
   id: string;
   materials: MaterialKeys[];
   count: number;
@@ -21,4 +22,5 @@ export type InventoryState = {
   currentSelectedTool: Tool | null;
   tools: Partial<Record<ToolKeys, Tool>>;
   materials: Partial<Record<MaterialKeys, Material>>;
+  isCrafting: boolean;
 };

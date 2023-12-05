@@ -39,6 +39,7 @@ export const toolsData: Record<ToolKeys, ToolData> = {
   [ToolKeys.MEDKIT]: {
     name: 'Health Kit',
     description: 'Restores health when injuries.',
+    extraDescription: 'Hold {R} to use.',
     id: '805c0c7e799f994f8b494a3ce6edfcb0d9382686',
     materials: [MaterialKeys.ALCOHOL, MaterialKeys.RAG],
   },

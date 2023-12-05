@@ -1,9 +1,12 @@
+import { CSSProperties } from 'react';
 import cls from 'classnames';
 import { useAtomValue } from 'jotai';
 
-import { currentSelectedToolAtom, materialsAtom } from '~/atoms';
+import { currentSelectedToolAtom, isCraftingAtom, materialsAtom } from '~/atoms';
 import Icon from '~/components/Icon';
 import { MaterialKeys, materialList, ToolKeys } from '~/enums';
+
+import { Loading } from './svgs';
 
 import styles from './styles.module.scss';
 
@@ -22,6 +25,7 @@ const materialIconMap: Record<MaterialKeys, JSX.Element> = {
 export default function Material() {
   const materials = useAtomValue(materialsAtom);
   const currentSelectedTool = useAtomValue(currentSelectedToolAtom);
+  const isCrafting = useAtomValue(isCraftingAtom);
 
   return (
     <div className={styles.Material}>
@@ -30,12 +34,30 @@ export default function Material() {
           [styles.more]: currentSelectedTool?.key === ToolKeys.MELEE_UPGRADE,
         })}
       >
-        {materialList.map((materialKey) => (
-          <li key={materialKey}>
-            <div className={styles.item}>{materialIconMap[materialKey]}</div>
-            <div className={styles.count}>{materials[materialKey]?.count ?? 0}</div>
-          </li>
-        ))}
+        {materialList.map((materialKey) => {
+          const isActive = currentSelectedTool?.materials.includes(materialKey);
+          return (
+            <li
+              key={materialKey}
+              className={cls({
+                [styles.active]: isActive,
+              })}
+            >
+              <div
+                className={styles.item}
+                style={{ '--portion': materials[materialKey]!.count % 1 } as CSSProperties}
+              >
+                <Loading
+                  className={styles.progress}
+                  shouldAnimate={isActive && isCrafting}
+                  toProgress={isActive && isCrafting ? 0 : 100}
+                />
+                {materialIconMap[materialKey]}
+              </div>
+              <div className={styles.count}>{Math.floor(materials[materialKey]!.count)}</div>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

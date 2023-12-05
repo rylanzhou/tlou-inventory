@@ -24,3 +24,9 @@ export const materialsAtom = atomWithDefault((get) => {
 
   return inventory.materials;
 });
+
+export const isCraftingAtom = atomWithDefault((get) => {
+  const inventory = get(inventoryAtom);
+
+  return inventory.isCrafting;
+});

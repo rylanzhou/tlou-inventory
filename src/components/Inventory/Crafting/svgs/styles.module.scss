@@ -1,0 +1,13 @@
+.ProgressRing {
+  width: 120px;
+  aspect-ratio: 1;
+  stroke-width: 4px;
+  stroke: white;
+
+  .circle {
+    transition-property: stroke-dashoffset;
+    transition-timing-function: ease;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+  }
+}
