@@ -35,13 +35,15 @@
   }
 
   .recipe {
-    height: min-content;
-    margin-top: auto;
     font-size: 1.35rem;
 
     span {
       color: $highlight;
       font-weight: 500;
+
+      &.insufficient {
+        color: $insufficient-color-highlight;
+      }
     }
   }
 }
@@ -135,6 +137,32 @@
 
         .count {
           color: $highlight;
+        }
+      }
+
+      // when material is insufficient, display red progress ring, turn count to red
+      &.insufficient {
+        .item {
+          .progress {
+            opacity: 1;
+            stroke: $insufficient-color;
+          }
+        }
+
+        .count {
+          color: $insufficient-color;
+        }
+
+        &.active {
+          .item {
+            .progress {
+              stroke: $insufficient-color-highlight;
+            }
+          }
+
+          .count {
+            color: $insufficient-color-highlight;
+          }
         }
       }
     }
@@ -243,8 +271,7 @@
     }
 
     // When hovering, display top and bottom borders, lighten background, highlight count, display capacity
-    &.active,
-    &:focus {
+    &.active {
       .background {
         border-color: rgba(255, 255, 255, 0.7);
         background-color: rgba(255, 255, 255, 0.1);
@@ -280,6 +307,12 @@
         opacity: 0;
       }
     }
+
+    &.insufficient {
+      svg {
+        fill: #999;
+      }
+    }
   }
 }
 
@@ -296,6 +329,7 @@
     align-items: center;
     gap: 0.5rem;
     color: $highlight;
+    transition: color $transition;
 
     .control-key {
       font-size: 0.8rem;
@@ -361,6 +395,20 @@
         mask: radial-gradient(circle, #0000 63%, #fff9 63%);
         animation: rotate 3s linear infinite;
         transition: opacity $transition;
+      }
+    }
+
+    &.disabled {
+      color: #999;
+
+      .long-control-key {
+        span {
+          background-color: #999;
+        }
+
+        &::after {
+          opacity: 0;
+        }
       }
     }
   }

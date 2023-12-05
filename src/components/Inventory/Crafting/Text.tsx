@@ -1,4 +1,5 @@
 import { Fragment, useMemo } from 'react';
+import cls from 'classnames';
 import { useAtomValue } from 'jotai';
 
 import { currentSelectedToolAtom, materialsAtom } from '~/atoms';
@@ -13,7 +14,12 @@ export default function Text() {
     const materialRequired = currentSelectedTool?.materials ?? [];
 
     return materialRequired.map((materialKey) => (
-      <span key={materialKey}>{materials[materialKey]?.name}</span>
+      <span
+        key={materialKey}
+        className={cls({ [styles.insufficient]: (materials[materialKey]?.count || 0) < 1 })}
+      >
+        {materials[materialKey]?.name}
+      </span>
     ));
   }, [currentSelectedTool, materials]);
 

@@ -30,3 +30,23 @@ export const isCraftingAtom = atomWithDefault((get) => {
 
   return inventory.isCrafting;
 });
+
+export const craftingDisabledAtom = atomWithDefault((get) => {
+  const currentSelectedTool = get(currentSelectedToolAtom);
+
+  if (!currentSelectedTool) {
+    return true;
+  }
+
+  // when the current tool's count reached capacity, or does not have enough materials to craft, disable craft button
+  if (currentSelectedTool.count >= currentSelectedTool.capacity) {
+    return true;
+  }
+
+  const materials = get(materialsAtom);
+  if (currentSelectedTool.materials.some((material) => materials[material]!.count < 1)) {
+    return true;
+  }
+
+  return false;
+});

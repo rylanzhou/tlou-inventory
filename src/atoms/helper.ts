@@ -9,8 +9,7 @@ export const initInventoryState = (): InventoryState => {
     toolsMap[toolKey] = {
       ...toolsData[toolKey],
       key: toolKey,
-      // count: Math.floor(4 * Math.random()), // between 0 - 3
-      count: 2,
+      count: Math.floor(4 * Math.random()), // between 0 - 3
       capacity: toolKey === ToolKeys.MELEE_UPGRADE ? 1 : 3,
     };
   });
@@ -29,7 +28,7 @@ export const initMaterialState = (): InventoryState['materials'] => {
   materialList.forEach((materialKey) => {
     materialsMap[materialKey] = {
       ...materialsData[materialKey as MaterialKeys],
-      count: 1.75,
+      count: Math.floor(4 * Math.random()), // between 0 - 3
       capacity: materialKey === MaterialKeys.MELEE ? 1 : 3,
     };
   });

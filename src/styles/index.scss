@@ -6,6 +6,10 @@
   box-sizing: border-box;
   font-family: 'DIN Round Pro', sans-serif;
   user-select: none;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 html {

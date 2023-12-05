@@ -41,6 +41,7 @@ export default function Material() {
               key={materialKey}
               className={cls({
                 [styles.active]: isActive,
+                [styles.insufficient]: (materials[materialKey]?.count || 0) < 1,
               })}
             >
               <div
