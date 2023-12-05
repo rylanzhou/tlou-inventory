@@ -1,4 +1,4 @@
-import { CSSProperties } from 'react';
+import type { CSSProperties } from 'react';
 import cls from 'classnames';
 import { useAtomValue } from 'jotai';
 

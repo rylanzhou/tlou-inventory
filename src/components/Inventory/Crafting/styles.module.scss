@@ -368,7 +368,8 @@
           height $transition,
           width $transition,
           line-height $transition,
-          font-size $transition;
+          font-size $transition,
+          background-color $transition;
       }
 
       .progress {

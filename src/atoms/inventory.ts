@@ -2,7 +2,7 @@ import { atom } from 'jotai';
 import { atomWithDefault } from 'jotai/utils';
 
 import { ToolKeys } from '~/enums';
-import { Tool } from '~/types';
+import type { Tool } from '~/types';
 
 import { initMaterialState, initToolState } from './helper';
 
