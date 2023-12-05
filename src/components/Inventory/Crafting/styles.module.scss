@@ -94,7 +94,9 @@
           opacity: 0;
           stroke: rgba(255, 255, 255, 0.7);
           stroke-width: 0.22rem;
-          transition: opacity $transition;
+          transition:
+            opacity $transition,
+            stroke $transition;
         }
 
         // create a sector to indicate partial material
