@@ -1,12 +1,12 @@
 export default function SmokeBomb() {
   return (
     <svg
-      viewBox="0 0 1024 1024"
-      version="1.1"
-      xmlns="http://www.w3.org/2000/svg"
-      p-id="5677"
-      width="200"
       height="200"
+      p-id="5677"
+      version="1.1"
+      viewBox="0 0 1024 1024"
+      width="200"
+      xmlns="http://www.w3.org/2000/svg"
     >
       <path
         d="M592 256l96-192c-24.4-13.968-76.064-0.288-96-16C536.096 3.904 487.52 7.6 432 48c-22.608 16.448-69.52-0.272-96 16l96 192"

@@ -2,11 +2,11 @@ export default function ShivSvg() {
   return (
     <svg
       height="200px"
-      width="200px"
-      version="1.1"
       id="Capa_1"
-      xmlns="http://www.w3.org/2000/svg"
+      version="1.1"
       viewBox="0 0 296.369 296.369"
+      width="200px"
+      xmlns="http://www.w3.org/2000/svg"
     >
       <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
       <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>

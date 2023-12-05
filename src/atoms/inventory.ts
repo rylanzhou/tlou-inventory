@@ -22,7 +22,6 @@ export const currentSelectedToolAtom = atomWithDefault((get) => {
  * Atom to toggle whether crafting is in progress. The state is updated when the user presses or lifts the mouse.
  */
 export const isCraftingAtom = atom(false, (get, set, isCrafting: boolean) => {
-  console.log(isCrafting);
   const timeout = get(craftTimeoutAtom);
 
   if (!isCrafting) {

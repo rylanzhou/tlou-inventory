@@ -10,7 +10,7 @@ import {
   toolsAtom,
 } from '~/atoms';
 import { ToolKeys, toolList } from '~/enums';
-import { Tool } from '~/types';
+import { type Tool } from '~/types';
 
 import { BombSvg, MedkitSvg, Melee, MolotovSvg, ShivSvg, SmokeBombSvg } from './svgs';
 
@@ -78,8 +78,8 @@ export default function Tools() {
 
   return (
     <div
-      className={styles.Tools}
       ref={toolsSectionRef}
+      className={styles.Tools}
       tabIndex={0}
       onKeyDown={handleKeyDown}
       onKeyUp={handleKeyUp}
@@ -96,9 +96,9 @@ export default function Tools() {
               [styles.crafting]: isActive && isCrafting,
               [styles.insufficient]: (tools[toolKey]?.count || 0) < 1,
             })}
-            onMouseOver={handleToolSelect(tools[toolKey])}
             onFocus={handleToolSelect(tools[toolKey])}
             onMouseDown={handleMouseDown}
+            onMouseOver={handleToolSelect(tools[toolKey])}
             onMouseUp={handleMouseUp}
           >
             {toolIconMap[toolKey]}

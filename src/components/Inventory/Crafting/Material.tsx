@@ -13,13 +13,13 @@ import styles from './styles.module.scss';
 const itemIconSize = '2rem';
 
 const materialIconMap: Record<MaterialKeys, JSX.Element> = {
-  [MaterialKeys.ALCOHOL]: <Icon name="water_drop" fill={1} size={itemIconSize} />,
-  [MaterialKeys.RAG]: <Icon name="tab_duplicate" weight={300} size={itemIconSize} />,
-  [MaterialKeys.SUGAR]: <Icon name="storefront" fill={1} size={itemIconSize} />,
+  [MaterialKeys.ALCOHOL]: <Icon fill={1} name="water_drop" size={itemIconSize} />,
+  [MaterialKeys.RAG]: <Icon name="tab_duplicate" size={itemIconSize} weight={300} />,
+  [MaterialKeys.SUGAR]: <Icon fill={1} name="storefront" size={itemIconSize} />,
   [MaterialKeys.EXPLOSIVE]: <Icon name="explosion" size={itemIconSize} />,
   [MaterialKeys.BINDING]: <Icon name="measuring_tape" size={itemIconSize} />,
-  [MaterialKeys.BLADE]: <Icon name="cut" weight={300} size={itemIconSize} />,
-  [MaterialKeys.MELEE]: <Icon name="handyman" weight={300} size={itemIconSize} />,
+  [MaterialKeys.BLADE]: <Icon name="cut" size={itemIconSize} weight={300} />,
+  [MaterialKeys.MELEE]: <Icon name="handyman" size={itemIconSize} weight={300} />,
 };
 
 export default function Material() {

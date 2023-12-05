@@ -18,10 +18,10 @@ export default function Navbar() {
           <Icon name="construction" size={iconSize} weight={300} />
         </li>
         <li>
-          <Icon name="pill" fill={1} size={iconSize} weight={250} />
+          <Icon fill={1} name="pill" size={iconSize} weight={250} />
         </li>
         <li>
-          <Icon name="note_stack" fill={1} size={iconSize} weight={250} />
+          <Icon fill={1} name="note_stack" size={iconSize} weight={250} />
         </li>
       </ul>
 

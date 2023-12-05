@@ -27,8 +27,6 @@ export default function Progress({
 
       circleRef.current.style.strokeDashoffset = `${circumference}`;
     }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [circleRef]);
 
   useEffect(() => {
@@ -57,14 +55,14 @@ export default function Progress({
   return (
     <svg className={cls(styles.ProgressRing, className)}>
       <circle
-        className={styles.circle}
         ref={circleRef}
-        fill="transparent"
+        className={styles.circle}
         cx="50%"
         cy="50%"
-        // by default when width is 120px and stroke width is 4px, r should be 60 - 2*4 = 52, which is 43%.
-        r="43%"
+        fill="transparent"
         // keep full progress animation duration at 2s
+        r="43%"
+        // by default when width is 120px and stroke width is 4px, r should be 60 - 2*4 = 52, which is 43%.
         style={calculatedStyle}
         {...restProps}
       />
